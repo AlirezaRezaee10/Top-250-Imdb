@@ -1,23 +1,7 @@
 import {Link} from 'react-router-dom';
-// import ReactPaginate from "react-paginate";
 
 export default function Paginationn({pageCount, paginate, currentPage, prevPage, nextPage, error, genre, genreId}) {
-    // return (
-    // <ReactPaginate
-    //     previousLabel={"<"}
-    //     nextLabel={">"}
-    //     breakLabel={"..."}
-    //     breakClassName={"break-me"}
-    //     pageCount={pageCount}
-    //     marginPagesDisplayed={2}
-    //     pageRangeDisplayed={5}
-    //     onPageChange={paginate}
-    //     containerClassName={"pagination"}
-    //     subContainerClassName={"pages pagination"}
-    //     activeClassName={"paginationActive"}
-    // />
-    // )
-    // const pageNumbersStart = []
+
     let path = "/"
     const pageNumbersEnd = []
     const pageNumbersCenter = []
@@ -36,7 +20,6 @@ export default function Paginationn({pageCount, paginate, currentPage, prevPage,
     for (let i = currentPage - 1; i <= currentPage + 1; i++) {
         if (i > 0 && i <= pageCount -1) pageNumbersCenter.push(i)
     }
-    // pageNumbersStart.map(number => pageNumber.push(number));
     for (let i= 0; i < pageNumbersCenter.length; i++) {
         if (pageNumbersCenter[i] > pageNumber[2]) {
             if ( pageNumbersCenter[0] > pageNumber[2] + 1 ) {
@@ -55,7 +38,6 @@ export default function Paginationn({pageCount, paginate, currentPage, prevPage,
             } else pageNumber.push(pageNumbersEnd[i])
         }
     }
-    // console.log(pageNumber.at(-1)+1)
 
     for (let i = 1; i <= pageCount; i++) {
         pageNumbers.push(i)

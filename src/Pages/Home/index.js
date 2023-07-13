@@ -11,16 +11,14 @@ export const Home = ({genre}) => {
     const queryString = useLocation().search
     const queryParams = new URLSearchParams(queryString)
     const query = queryParams.get("q")
-    // console.log(query)
 
     const [posts, setPosts] = useState([])
     const [currentPage, setCurrentPage] = useState(pageNO)
     const [pageCount, setPageCount] = useState(1)
-    const [search, setSearch] = useState(query)
     const [loading, setLoading] = useState(true)
     const [endPoint, setEndPoint] = useState("movies?page=")
 
-    console.log(endPoint)
+    console.log(genre)
     useEffect(() => {
         if (genre) {
             setEndPoint(`genres/${genreId}/movies?page=`)
@@ -31,17 +29,14 @@ export const Home = ({genre}) => {
             setEndPoint(`movies?q=${query}&page=`)
             console.log(endPoint)
         }
-        // console.log(genre)
-        GetData(setLoading, endPoint + currentPage)
+
+        GetData(setLoading, `${endPoint}${currentPage}`)
             .then(res => {
-                console.log(pageNO)
                 setPosts(res.data);
                 setPageCount(res.metadata.page_count)
-                // setSearch("")
-                console.log(currentPage)
             })
             .catch(err => console.log(err))
-    }, [currentPage, endPoint, query])
+    }, [currentPage, endPoint, genre, genreId, query])
 
     const paginate = pageNumber => {
         setCurrentPage(pageNumber)

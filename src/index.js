@@ -5,15 +5,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './Styles/style.css'
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
-import {Header} from "./components/Header";
-import {Footer} from "./components/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        {/*<Header/>*/}
         <App/>
-        {/*<Footer/>*/}
     </React.StrictMode>
 );
 
