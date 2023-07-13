@@ -24,7 +24,7 @@ export const Posts = ({data, loading}) => {
                                         <p className="card-text">Rating: {post.imdb_rating}</p>
                                     </div>
                                     <div className='card-footer h-25 d-flex justify-content-center align-items-center'>
-                                        <Link to={`/movie/${post.id}`} className="btn btn-primary">Go somewhere</Link>
+                                        <Link to={`/movie/${post.id}`} className="btn btn-primary">Movie Details</Link>
                                     </div>
                                 </div>
                             </div>
