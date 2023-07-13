@@ -38,6 +38,7 @@ export async function PostData (userdata, endpoint) {
                 }
             }
         )
+        return response.data
     } catch (err){
         console.log(err)
     } finally {
