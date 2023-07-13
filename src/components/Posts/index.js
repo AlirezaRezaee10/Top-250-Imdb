@@ -1,6 +1,5 @@
-import {Link, Navigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Loading} from "../Loading";
-import {useState} from "react";
 
 export const Posts = ({data, loading}) => {
 
