@@ -19,6 +19,7 @@ export const Home = ({genre}) => {
     const [endPoint, setEndPoint] = useState("movies?page=")
 
     console.log(genre)
+
     useEffect(() => {
         if (genre) {
             setEndPoint(`genres/${genreId}/movies?page=`)

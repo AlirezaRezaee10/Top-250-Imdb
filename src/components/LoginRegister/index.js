@@ -20,7 +20,7 @@ export const LoginRegister = () => {
                     setIsLogin(true)
                     prev(-3)
                     console.log(res)
-                    userData = {}
+                    // userData = {}
                 }
             })
             .catch(err => console.log(err))
@@ -31,7 +31,7 @@ export const LoginRegister = () => {
         PostData(userData, "api/v1/register")
             .then(res => {
                 console.log(res)
-                userData = {}
+                // userData = {}
             })
             .catch(err => console.log(err))
     //     console.log("before", userData)

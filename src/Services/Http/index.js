@@ -29,19 +29,32 @@ export async function GetData (setLoading, endPoint) {
 export async function PostData (userdata, endpoint) {
     let response = []
     try {
-        response = await client.post(
+        // response = await client.post(
+        //     endpoint,
+        //     userdata,
+        //     {
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     }
+        // )
+        // console.log(response)
+        // return response.data
+        console.log(userdata)
+        response = await fetch(
             endpoint,
-            userdata,
             {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
-                }
+                    "Content-Type": "application.json"
+                },
+                body: JSON.stringify(userdata)
             }
         )
-        return response.data
+
     } catch (err){
         console.log(err)
     } finally {
-        console.log(response.data)
+        console.log(response)
     }
 }
