@@ -16,27 +16,39 @@ export const Home = ({genre}) => {
     const [currentPage, setCurrentPage] = useState(pageNO)
     const [pageCount, setPageCount] = useState(1)
     const [loading, setLoading] = useState(true)
-    const [endPoint, setEndPoint] = useState("movies?page=")
+    const [endPoint, setEndPoint] = useState(null)
 
     console.log(genre)
 
     useEffect(() => {
-        if (genre) {
-            setEndPoint(`genres/${genreId}/movies?page=`)
-            console.log(endPoint)
-        }
-        if (query && query !== ""){
-            setCurrentPage(1)
-            setEndPoint(`movies?q=${query}&page=`)
-            console.log(endPoint)
+        try{
+
+            if (genre) {
+                setEndPoint(`genres/${genreId}/movies?page=`)
+                console.log(endPoint)
+            }
+            else if (query && query !== ""){
+                setCurrentPage(1)
+                setEndPoint(`movies?q=${query}&page=`)
+                console.log(endPoint)
+            }
+            else setEndPoint("movies?page=")
+
+        } catch (error) {
+            console.log(error)
+        } finally {
+            if (endPoint != null) {
+                GetData(setLoading, `${endPoint}${currentPage}`)
+                    .then(res => {
+                        setPosts(res.data);
+                        setPageCount(res.metadata.page_count)
+                    })
+                    .catch(err => console.log(err))
+
+            }
+
         }
 
-        GetData(setLoading, `${endPoint}${currentPage}`)
-            .then(res => {
-                setPosts(res.data);
-                setPageCount(res.metadata.page_count)
-            })
-            .catch(err => console.log(err))
     }, [currentPage, endPoint, genre, genreId, query])
 
     const paginate = pageNumber => {
